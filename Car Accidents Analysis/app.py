@@ -5,23 +5,20 @@ import seaborn as sns
 import io
 import base64
 
-# Initialize Flask app
 app = Flask(__name__)
 
 # Load dataset
 df = pd.read_csv('cleaned_traffic_accidents.csv')
 
-# Ensure crash_date is parsed correctly
 date_column = 'crash_date'
 if date_column in df.columns:
     df[date_column] = pd.to_datetime(df[date_column])
 else:
     raise ValueError(f"Column '{date_column}' not found in the CSV file.")
 
-# Convert crash_hour to integer
+# Crash_hour to integer
 df['crash_hour'] = df['crash_hour'].astype(int)
 
-# Function to generate base64-encoded plot
 def generate_plot(fig):
     buf = io.BytesIO()
     fig.savefig(buf, format='png')
@@ -30,10 +27,9 @@ def generate_plot(fig):
     buf.close()
     return image_base64
 
-# Route to display the dashboard
 @app.route('/')
 def index():
-    # Calculate summary statistics
+    
     total_accidents = len(df)
     most_common_cause = df['prim_contributory_cause'].mode()[0]
     most_frequent_weather = df['weather_condition'].mode()[0]
@@ -123,7 +119,6 @@ def index():
     plot6 = generate_plot(plt.gcf())
     plt.clf()
 
-    # Pass plots and summary data to the template
     return render_template('index.html', 
                            plot1=plot1, plot2=plot2, plot3=plot3, plot4=plot4,
                            plot5=plot5, plot6=plot6,

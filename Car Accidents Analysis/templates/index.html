@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Accident Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Traffic Accident Analysis Dashboard</h1>
+    </header>
+
+    <!-- Summary Section -->
+    <section id="summary">
+        <h2>Summary of Traffic Accidents</h2>
+        <div class="summary-box">
+            <p><strong>Total Accidents:</strong> {{ total_accidents }}</p>
+            <p><strong>Most Common Contributory Cause:</strong> {{ most_common_cause }}</p>
+            <p><strong>Most Frequent Weather Condition:</strong> {{ most_frequent_weather }}</p>
+            <p><strong>Peak Hour for Accidents (The hours in the datasheet is from 0-23 so here 17:00 is actually 18:00):</strong> {{ peak_hour }}:00</p>
+            <p><strong>Day with the Most Accidents:</strong> {{ most_frequent_day }}</p>
+            <p><strong>Average Damage Cost:</strong> {{ average_damage }}</p>
+        </div>
+    </section>
+
+    <main>
+        <section>
+            <h2>1. Accident Distribution by Hour of Day</h2>
+            <img src="data:image/png;base64,{{ plot1 }}" alt="Accidents by Hour">
+        </section>
+
+        <section>
+            <h2>2. Top 10 Primary Contributory Causes</h2>
+            <img src="data:image/png;base64,{{ plot2 }}" alt="Top 10 Causes">
+        </section>
+
+        <section>
+            <h2>3. Accident Distribution by Weather Conditions</h2>
+            <img src="data:image/png;base64,{{ plot3 }}" alt="Weather Conditions">
+        </section>
+
+        <section>
+            <h2>4. Accidents by Day of Week</h2>
+            <img src="data:image/png;base64,{{ plot4 }}" alt="Accidents by Day">
+        </section>
+
+        <section>
+            <h2>5. Accident Hotspots: Hour vs Day of Week</h2>
+            <img src="data:image/png;base64,{{ plot5 }}" alt="Heatmap">
+        </section>
+
+        <section>
+            <h2>6. Accident Severity by Damage Cost</h2>
+            <img src="data:image/png;base64,{{ plot6 }}" alt="Damage Cost">
+        </section>
+    </main>
+</body>
+</html>

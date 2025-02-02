@@ -59,10 +59,6 @@ These metrics offer a quick overview of the dataset and highlight critical areas
    - A bar chart categorizing accidents based on the severity of damage costs (e.g., "$500 OR LESS", "OVER $1,500").
    - Highlights the financial impact of accidents.
 
-7. **Crash Type vs Injury Severity**:
-   - A grouped bar chart comparing crash types (e.g., rear-end collisions) with injury severity levels.
-   - Provides insights into the relationship between crash types and their consequences.
-
 ---
 
 ## Technologies Used
